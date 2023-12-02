@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.bundle.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="todoApp">
+        <h2>To Do List <img src="./images/icon.png" alt="" /></h2>
+        <div class="searchBox">
+          <input type="text" placeholder="Add your task" id="input" />
+          <input type="date" id="dueDateInput" required />
+          <select id="prioritySelect">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+          <button class="addTastBtn">Add</button>
+        </div>
+        <div class="taskCount">
+          <h2>Number of tasks:</h2>
+          <span></span>
+        </div>
+        <div class="taskCompleted">
+          <h2>Number of completed tasks:</h2>
+          <span></span>
+        </div>
+        <ul id="listContainer"></ul>
+        <button class="clearCompletedTasks">Clear All Completed Tasks</button>
+      </div>
+    </div>
+  </body>
+</html>

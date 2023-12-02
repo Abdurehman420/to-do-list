@@ -1,0 +1,313 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgba(17, 51, 215, 1) 17%,
+    rgba(121, 9, 109, 1) 52%,
+    rgba(208, 16, 16, 1) 98%
+  );
+}
+
+.todoApp {
+  width: 95%;
+  max-width: 600px;
+  margin: 100px auto;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 30px 70px;
+  position: relative;
+
+  & h2 {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    & img {
+      width: 40px;
+    }
+  }
+}
+
+.searchBox {
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.151);
+  border-radius: 50px;
+  display: flex;
+  & input {
+    width: 100%;
+    border-radius: 50px;
+    border: none;
+    padding: 15px 25px;
+    padding-right: 0;
+    outline: none;
+    background: transparent;
+    font-size: 17px;
+  }
+  & button {
+    border-radius: 50px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: none;
+    border-left: 1px solid white;
+    padding: 15px 30px;
+    background-color: tomato;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+#listContainer {
+  list-style: none;
+
+  margin: 20px 0;
+  padding: 0 10px;
+  border-radius: 10px;
+
+  & li {
+    font-size: 18px;
+    padding: 12px 8px 12px 60px;
+    user-select: none;
+    padding-left: 25px;
+    cursor: pointer;
+    position: relative;
+
+    &:active {
+      cursor: grabbing;
+      background-color: #f5f5f5;
+    }
+    & span {
+      position: absolute;
+      right: -30px;
+      top: 5px;
+      width: 40px;
+      height: 40px;
+      font-size: 25px;
+      color: #555;
+      transition: all 200ms;
+
+      text-align: center;
+      border-radius: 50%;
+      &:hover {
+        background-color: #edeef0;
+      }
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      height: 28px;
+      width: 28px;
+      background: url(./images/unchecked.png);
+      left: -15px;
+      background-size: cover;
+      border-radius: 50%;
+      background-position: center;
+    }
+
+    &.checked {
+      text-decoration: line-through;
+      color: #555;
+
+      &::before {
+        background-image: url(./images/checked.png);
+      }
+    }
+  }
+}
+
+.taskCount {
+  margin-top: 15px;
+  display: flex;
+  & h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  & span {
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 5px;
+  }
+}
+.taskCompleted {
+  display: flex;
+  & h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  & span {
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 5px;
+  }
+}
+.clearCompletedTasks {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 10px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border: none;
+  padding: 10px 25px;
+  background-color: tomato;
+  color: white;
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+#prioritySelect {
+  border-radius: 50px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border: none;
+  padding: 10px 35px;
+  padding-left: 15px;
+  background-color: tomato;
+  outline: none;
+  color: white;
+  font-size: 15px;
+
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='30' viewBox='0 0 24 24' width='30' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 92%;
+  background-position-y: 10px;
+  border: 1px solid #dfdfdf;
+}
+
+.low {
+  position: relative;
+  &::after {
+    content: "Low";
+    position: absolute;
+
+    right: 47px;
+    top: 14px;
+    color: white;
+    background-color: #4caf50;
+    border-radius: 5px;
+    padding: 2px 5px;
+    font-size: 14px;
+  }
+}
+.medium {
+  position: relative;
+
+  &::after {
+    content: "Medium";
+    position: absolute;
+    right: 33px;
+    color: white;
+    top: 14px;
+    background-color: rgb(230, 197, 10);
+    border-radius: 5px;
+    padding: 2px 5px;
+    font-size: 14px;
+  }
+}
+.high {
+  position: relative;
+  &::after {
+    content: "High";
+    position: absolute;
+    right: 44px;
+    top: 14px;
+    background-color: tomato;
+    border-radius: 5px;
+    color: white;
+    padding: 2px 5px;
+    font-size: 14px;
+  }
+}
+.dateStyling {
+  margin-left: 50px;
+}
+#dueDateInput {
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .searchBox {
+    & input {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+    & button {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+  }
+
+  #prioritySelect {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-position-y: 6px;
+  }
+
+  .clearCompletedTasks {
+    padding: 10px 15px;
+
+    font-size: 14px;
+  }
+
+  #listContainer {
+    & li {
+      font-size: 14px;
+      padding-left: 10px;
+
+      & span {
+        right: -35px;
+      }
+      &::before {
+        top: 12px;
+        height: 22px;
+        width: 22px;
+        left: -25px;
+      }
+    }
+  }
+
+  .low {
+    &::after {
+      top: 15px;
+      right: 30px;
+      font-size: 12px;
+    }
+  }
+  .medium {
+    &::after {
+      right: 19px;
+
+      font-size: 12px;
+    }
+  }
+  .high {
+    &::after {
+      right: 26px;
+
+      font-size: 12px;
+    }
+  }
+}
